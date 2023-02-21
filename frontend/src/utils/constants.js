@@ -1,4 +1,5 @@
-export const URL = "http://localhost:3001";
+// export const URL = "http://localhost:3001";
+export const URL = "https://api.anastasiialk1.nomoredomains.work";
 
 export const MINIMUM_PASSWORD_LENGTH = 3;
 export const MINIMUM_USERNAME_LENGTH = 3;
