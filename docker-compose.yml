@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  database:
+    container_name: 'database'
+    image: 'postgres:12'
+    networks:
+      - db
+    env_file:
+      - .env
+    restart: on-failure
+    volumes:
+      - pg_data:/var/lib/postgresql/data/pgdata
+
+  frontend:
+    container_name: 'frontend'
+    build: ./frontend
+    restart: on-failure
+    ports:
+      - '8081:80'
+
+  backend:
+    container_name: 'backend'
+    build: ./backend
+    networks:
+      - db
+    env_file:
+      - ./.env
+    restart: on-failure
+    ports:
+      - '4000:3000'
+    depends_on:
+      - database
+
+volumes:
+  pg_data:
+    driver: local
+
+networks:
+  db: {}

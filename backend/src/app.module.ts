@@ -18,7 +18,7 @@ import { Offer } from './offers/entities/offer.entity';
 import config from './config/config';
 
 const dotenv = require('dotenv');
-dotenv.config({ path: '../.env' });
+dotenv.config({ path: '../../.env' });
 
 @Module({
   imports: [
