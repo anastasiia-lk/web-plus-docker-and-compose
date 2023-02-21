@@ -9,6 +9,10 @@ services:
     env_file:
       - .env
     restart: on-failure
+    environment:
+      - POSTGRES_USER=student
+      - POSTGRES_PASSWORD=student
+      - POSTGRES_DB=nest-project
     volumes:
       - pg_data:/var/lib/postgresql/data/pgdata
 
