@@ -17,16 +17,20 @@ import { Offer } from './offers/entities/offer.entity';
 
 import config from './config/config';
 
+const dotenv = require('dotenv');
+dotenv.config({ path: '../.env' });
+
 @Module({
   imports: [
     ConfigModule.forRoot({ load: [config], isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.POSTGRES_HOST,
       port: 5432,
-      username: 'student',
-      password: 'student',
-      database: 'kupipodariday',
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      // database: 'kupipodariday',
+      database: process.env.POSTGRES_DB,
       entities: [User, Wish, Wishlist, Offer],
       synchronize: true,
     }),
